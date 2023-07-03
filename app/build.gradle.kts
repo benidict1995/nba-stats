@@ -21,6 +21,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        compileSdkPreview = "UpsideDownCake"
     }
 
     buildTypes {
@@ -55,6 +56,14 @@ android {
 dependencies {
     implementation (project(":data"))
     implementation (project(":common"))
+
+    val navVersion = "2.6.0"
+    implementation("androidx.navigation:navigation-compose:$navVersion")
+
+    val multidexVersion = "2.0.1"
+    implementation ("androidx.multidex:multidex:$multidexVersion")
+
+    implementation("androidx.core:core-splashscreen:1.1.0-alpha01")
 
     implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")

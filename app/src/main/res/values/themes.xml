@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!--replace the splash screen icon-->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_nba</item>
+        <!--replace the splash screen background-->
+        <item name="windowSplashScreenBackground">#BBDEFB</item>
+        <!--setup application actual theme-->
+        <item name="postSplashScreenTheme">@style/Theme.Nbastats</item>
+    </style>
+
     <style name="Theme.Nbastats" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
