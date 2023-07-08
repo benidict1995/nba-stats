@@ -13,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import com.benidict.nba_stats.navigation.graph.MainNavGraph
 import com.benidict.nba_stats.ui.theme.NbastatsTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,13 +30,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NbastatsTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                }
+                MainNavGraph(navController = rememberNavController())
             }
         }
     }
+
 }
