@@ -35,17 +35,6 @@ fun HomeScreen(navHostController: NavHostController = rememberNavController()) {
                 colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = colorResource(id = R.color.purple_500)),
                 modifier = Modifier
                     .fillMaxWidth(),
-                navigationIcon = {
-                    IconButton(onClick = {
-
-                    }) {
-                        Icon(
-                            imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = titleBar,
-                            tint = Color.White
-                        )
-                    }
-                },
                 title = {
                     Text(
                         fontWeight = FontWeight.Medium,
