@@ -16,7 +16,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import com.benidict.nba_stats.navigation.graph.MainNavGraph
 import com.benidict.nba_stats.ui.theme.NbastatsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
 

@@ -8,23 +8,26 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.benidict.domain.model.Team
 import com.benidict.nba_stats.R
 import com.benidict.nba_stats.ui.theme.NbastatsTheme
 
 @Composable
-fun TeamCard() {
+fun TeamCard(team: Team) {
     Card(
         modifier = Modifier
-            .height(150.dp)
+            .wrapContentHeight()
             .fillMaxWidth()
             .clickable { }
     ){
@@ -49,7 +52,7 @@ fun TeamCard() {
             )
 
             Text(
-                text = "Test Team",
+                text = team.name,
                 modifier = Modifier.constrainAs(textTeamName){
                     top.linkTo(imageTeam.top)
                     start.linkTo(imageTeam.end, 10.dp)
@@ -65,6 +68,6 @@ fun TeamCard() {
 @Composable
 fun TeamCardPreview() {
     NbastatsTheme {
-        TeamCard()
+        TeamCard(Team.empty)
     }
 }

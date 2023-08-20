@@ -69,6 +69,10 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
+    // Paging 3
+    implementation ("androidx.paging:paging-runtime-ktx:3.2.0")
+    implementation ("androidx.paging:paging-compose:3.2.0")
+
     implementation ("com.google.dagger:hilt-android:2.45")
     kapt ("com.google.dagger:hilt-compiler:2.45")
 
