@@ -1,17 +1,13 @@
-package com.benidict.nba_stats.feature.teams
+package com.benidict.nba_stats.feature.games
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.benidict.data.repository.teams.TeamRepositoryImpl
-import com.benidict.data.usecase.teams.LoadTeamsUseCase
-import com.benidict.domain.model.Team
-import com.benidict.domain.state.ResponseState
+import com.benidict.data.usecase.games.LoadGamesUseCase
+import com.benidict.domain.model.Game
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -19,24 +15,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TeamViewModel @Inject constructor(
-    private val loadTeamsUseCase: LoadTeamsUseCase
+class GamesViewModel @Inject constructor(
+    private val loadGamesUseCase: LoadGamesUseCase
 ) : ViewModel() {
 
-    private val _teamsPagingState: MutableStateFlow<PagingData<Team>> = MutableStateFlow(
+    private val _state: MutableStateFlow<PagingData<Game>> = MutableStateFlow(
         value = PagingData.empty()
     )
-    val teamsPagingState = _teamsPagingState.asStateFlow()
+    val state = _state.asStateFlow()
 
-    fun loadTeams() {
+    fun loadGames() {
         viewModelScope.launch {
-            loadTeamsUseCase.execute()
+            loadGamesUseCase.execute()
                 .distinctUntilChanged()
                 .cachedIn(viewModelScope)
                 .collectLatest {
-                    _teamsPagingState.value = it
+                    _state.value = it
                 }
         }
     }
-
 }

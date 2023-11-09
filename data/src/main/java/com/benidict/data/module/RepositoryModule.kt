@@ -1,6 +1,8 @@
 package com.benidict.data.module
 
+import com.benidict.data.repository.games.GamesRepositoryImpl
 import com.benidict.data.repository.teams.TeamRepositoryImpl
+import com.benidict.network.remotesource.games.GameRemoteSourceImpl
 import com.benidict.network.remotesource.teams.TeamRemoteSourceImpl
 import dagger.Module
 import dagger.Provides
@@ -18,4 +20,12 @@ object RepositoryModule {
     fun provideTeamRepository(
         teamRemoteSourceImpl: TeamRemoteSourceImpl
     ) = TeamRepositoryImpl(teamRemoteSourceImpl)
+
+    @Provides
+    @Singleton
+    fun provideGamesRepository(
+        gameRemoteSourceImpl: GameRemoteSourceImpl
+    ) = GamesRepositoryImpl(
+        gameRemoteSourceImpl
+    )
 }

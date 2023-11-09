@@ -23,5 +23,17 @@ data class Team(
             fullName = "",
             name = ""
         )
+
+
+        val dummyData = Team(
+            id = 0,
+            abbreviation = "ATL",
+            city = "Atlanta",
+            conference = "East",
+            division = "Southeast",
+            fullName = "Atlanta Hawks",
+            name = "Hawks"
+        )
+
     }
 }

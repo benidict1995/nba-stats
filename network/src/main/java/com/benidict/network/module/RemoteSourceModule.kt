@@ -1,6 +1,7 @@
 package com.benidict.network.module
 
 import com.benidict.network.NbaServiceApi
+import com.benidict.network.remotesource.games.GameRemoteSourceImpl
 import com.benidict.network.remotesource.teams.TeamRemoteSourceImpl
 import dagger.Module
 import dagger.Provides
@@ -20,4 +21,11 @@ object RemoteSourceModule {
         nbaServiceApi = nbaServiceApi
     )
 
+    @Singleton
+    @Provides
+    fun providesGamesRemoteSource(
+        nbaServiceApi: NbaServiceApi
+    ) = GameRemoteSourceImpl(
+        nbaServiceApi = nbaServiceApi
+    )
 }

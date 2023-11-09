@@ -6,7 +6,7 @@ import androidx.paging.compose.LazyPagingItems
 import com.benidict.domain.model.Team
 
 @Composable
-fun LazyPagingItems<Team>.LoadPagingStateItem(
+fun <T: Any> LazyPagingItems<T>.LoadPagingStateItem(
     loadingRefresh: @Composable () -> Unit,
     loadingAppend: @Composable () -> Unit,
     errorRefresh: (Throwable) -> Unit,

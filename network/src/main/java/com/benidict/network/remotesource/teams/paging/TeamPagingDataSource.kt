@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.benidict.domain.model.Team
 import com.benidict.network.NbaServiceApi
-import com.benidict.network.remotesource.teams.mapper.mapRemoteToTeamDomain
+import com.benidict.network.model.TeamDTO.Companion.toDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -22,7 +22,7 @@ class TeamPagingDataSource(
                val response = nbaServiceApi.loadTeams(
                    page = page,
                    perPage = params.loadSize
-               ).data.mapRemoteToTeamDomain()
+               ).data.toDomain()
                LoadResult.Page(
                    data = response,
                    prevKey = if (page == STARTING_PAGE_INDEX) null else page.minus(1),

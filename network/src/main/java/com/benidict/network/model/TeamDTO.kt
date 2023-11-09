@@ -36,5 +36,19 @@ data class TeamDTO(
                 )
             }
         }
+
+        fun List<TeamDTO>.toDomain() = this.map {
+            with(it) {
+                Team(
+                    id = id,
+                    abbreviation = abbreviation,
+                    city = city,
+                    conference = conference,
+                    division = division,
+                    fullName = fullName,
+                    name = name
+                )
+            }
+        }.toList()
     }
 }
