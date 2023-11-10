@@ -86,7 +86,7 @@ fun GameCard(game: Game) {
                 fontSize = 10.sp,
                 modifier = Modifier.constrainAs(txtHomeCourtTeamName) {
                     end.linkTo(lblSeparator.start, margin = 30.dp)
-                    top.linkTo(lblFinal.bottom)
+                    bottom.linkTo(txtHomeCourtTeamScore.top)
                 })
 
             Text(text = game.score.toString(),
@@ -95,7 +95,8 @@ fun GameCard(game: Game) {
                 modifier = Modifier.constrainAs(txtHomeCourtTeamScore) {
                     start.linkTo(txtHomeCourtTeamName.start)
                     end.linkTo(txtHomeCourtTeamName.end)
-                    top.linkTo(txtHomeCourtTeamName.bottom)
+                    top.linkTo(imgHomeCourtTeam.top)
+                    bottom.linkTo(imgHomeCourtTeam.bottom)
                 })
 
             Text(
@@ -103,8 +104,8 @@ fun GameCard(game: Game) {
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 modifier = Modifier.constrainAs(lblSeparator) {
-                    top.linkTo(lblSeparator.bottom)
-                    bottom.linkTo(parent.bottom)
+                    top.linkTo(txtHomeCourtTeamScore.top)
+                    bottom.linkTo(txtHomeCourtTeamScore.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end
                     )
@@ -119,7 +120,7 @@ fun GameCard(game: Game) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
-                    bottom.linkTo(lblSeparator.top)
+                    bottom.linkTo(txtHomeCourtTeamName.top)
                 }
             )
 
@@ -128,7 +129,7 @@ fun GameCard(game: Game) {
                 fontSize = 10.sp,
                 modifier = Modifier.constrainAs(txtVisitorCourtTeamName) {
                     start.linkTo(lblSeparator.end, margin = 30.dp)
-                    top.linkTo(lblFinal.bottom)
+                    bottom.linkTo(txtVisitorCourtTeamScore.top)
                 })
 
 
@@ -138,7 +139,8 @@ fun GameCard(game: Game) {
                 modifier = Modifier.constrainAs(txtVisitorCourtTeamScore) {
                     start.linkTo(txtVisitorCourtTeamName.start)
                     end.linkTo(txtVisitorCourtTeamName.end)
-                    top.linkTo(txtVisitorCourtTeamName.bottom)
+                    top.linkTo(imgVisitorTeam.top)
+                    bottom.linkTo(imgVisitorTeam.bottom)
                 })
 
         }
