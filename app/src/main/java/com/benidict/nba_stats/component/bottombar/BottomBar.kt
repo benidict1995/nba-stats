@@ -1,8 +1,6 @@
 package com.benidict.nba_stats.component.bottombar
 
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -12,11 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.benidict.nba_stats.R
 import com.benidict.nba_stats.navigation.NavRoute
 
 val items = listOf(
@@ -38,6 +38,13 @@ fun BottomBar(
             items.forEach { item ->
                 AddItem(
                     screen = item,
+                    icon =
+                    when (item.title) {
+                        BottomNavItem.Home.title -> ImageVector.vectorResource(R.drawable.baseline_home_filled_24)
+                        BottomNavItem.Games.title -> ImageVector.vectorResource(R.drawable.baseline_sports_basketball_24)
+                        BottomNavItem.Statistics.title -> ImageVector.vectorResource(R.drawable.baseline_analytics_24)
+                        else -> ImageVector.vectorResource(R.drawable.baseline_home_filled_24)
+                    },
                     currentDestination = currentDestination,
                     navController = navController
                 )
@@ -50,6 +57,7 @@ fun BottomBar(
 @Composable
 fun RowScope.AddItem(
     screen: BottomNavItem,
+    icon: ImageVector,
     currentDestination: NavDestination?,
     navController: NavHostController
 ) {
@@ -59,10 +67,11 @@ fun RowScope.AddItem(
             Text(text = screen.title)
         },
 
+        // rememberVectorPainter(image = screen.icon),
         // The icon resource
         icon = {
             Icon(
-                rememberVectorPainter(image = screen.icon),
+                rememberVectorPainter(image = icon),
                 contentDescription = screen.title
             )
         },
@@ -89,27 +98,23 @@ fun RowScope.AddItem(
 
 sealed class BottomNavItem(
     var title: String,
-    var route: String,
-    var icon: ImageVector
+    var route: String
 ) {
     object Home :
         BottomNavItem(
             title = "Home",
-            route = NavRoute.TEAMS_ROUTE,
-            icon = Icons.Default.Home
+            route = NavRoute.TEAMS_ROUTE
         )
 
     object Games :
         BottomNavItem(
             title = "Games",
-            route = NavRoute.GAMES_ROUTE,
-            icon = Icons.Default.Home
+            route = NavRoute.GAMES_ROUTE
         )
 
     object Statistics :
         BottomNavItem(
             title = "Statistics",
-            route = NavRoute.STATS_ROUTE,
-            icon = Icons.Default.Home
+            route = NavRoute.STATS_ROUTE
         )
 }
