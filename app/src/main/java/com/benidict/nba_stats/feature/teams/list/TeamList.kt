@@ -1,10 +1,10 @@
 package com.benidict.nba_stats.feature.teams.list
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -14,10 +14,11 @@ import com.benidict.domain.model.Team
 import com.benidict.nba_stats.component.card.TeamCard
 import com.benidict.nba_stats.ext.LoadPagingStateItem
 import com.benidict.nba_stats.ext.SpaceMaxWidth
+import com.benidict.nba_stats.ext.onLoaderShow
 import com.benidict.nba_stats.feature.teams.TeamViewModel
 
 @Composable
-fun TeamList(viewModel: TeamViewModel) {
+fun TeamList(viewModel: TeamViewModel, loaderShow: onLoaderShow) {
     LaunchedEffect(Unit) {
         viewModel.loadTeams()
     }
@@ -35,10 +36,10 @@ fun TeamList(viewModel: TeamViewModel) {
         }
         teams.LoadPagingStateItem(
             loadingRefresh = {
-                //CircularProgressIndicator()
+                loaderShow(true)
             },
             loadingAppend = {
-                //CircularProgressIndicator()
+                loaderShow(false)
             },
             errorRefresh = {
 

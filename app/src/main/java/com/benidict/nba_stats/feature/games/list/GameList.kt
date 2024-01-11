@@ -13,10 +13,12 @@ import com.benidict.domain.model.Game
 import com.benidict.nba_stats.component.card.GameCard
 import com.benidict.nba_stats.ext.LoadPagingStateItem
 import com.benidict.nba_stats.ext.SpaceMaxWidth
+import com.benidict.nba_stats.ext.onLoaderShow
 import com.benidict.nba_stats.feature.games.GamesViewModel
 
+
 @Composable
-fun GameList(viewModel: GamesViewModel) {
+fun GameList(viewModel: GamesViewModel, loaderShow: onLoaderShow) {
     LaunchedEffect(Unit) {
         viewModel.loadGames()
     }
@@ -32,10 +34,10 @@ fun GameList(viewModel: GamesViewModel) {
         }
         games.LoadPagingStateItem(
             loadingRefresh = {
-
+                loaderShow(true)
             },
             loadingAppend = {
-
+                loaderShow(false)
             },
             errorRefresh = {
 
