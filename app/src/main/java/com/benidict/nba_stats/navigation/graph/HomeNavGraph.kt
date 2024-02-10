@@ -7,25 +7,25 @@ import androidx.navigation.compose.composable
 import com.benidict.nba_stats.feature.games.GamesScreen
 import com.benidict.nba_stats.feature.stats.StatsScreen
 import com.benidict.nba_stats.feature.teams.TeamsScreen
-import com.benidict.nba_stats.navigation.NavGraph
-import com.benidict.nba_stats.navigation.NavRoute
+import com.benidict.nba_stats.navigation.Graph
+import com.benidict.nba_stats.navigation.Screen
 
 @Composable
 fun HomeNavGraph(navController: NavHostController, onSelectedScreen: (String) -> Unit) {
     NavHost(
         navController = navController,
-        route = NavGraph.HOME_GRAPH,
-        startDestination = NavRoute.TEAMS_ROUTE
+        route = Graph.HOME_GRAPH.name,
+        startDestination = Screen.TEAM.name
     ) {
-        composable(route = NavRoute.TEAMS_ROUTE) {
+        composable(route = Screen.TEAM.name) {
             onSelectedScreen("Teams")
             TeamsScreen()
         }
-        composable(route = NavRoute.GAMES_ROUTE) {
+        composable(route = Screen.GAMES.name) {
             onSelectedScreen("Games")
             GamesScreen()
         }
-        composable(route = NavRoute.STATS_ROUTE) {
+        composable(route = Screen.STATS.name) {
             onSelectedScreen("Statistics")
             StatsScreen()
         }

@@ -17,7 +17,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.benidict.nba_stats.R
-import com.benidict.nba_stats.navigation.NavRoute
+import com.benidict.nba_stats.navigation.Screen
 
 val items = listOf(
     BottomNavItem.Home,
@@ -103,18 +103,18 @@ sealed class BottomNavItem(
     object Home :
         BottomNavItem(
             title = "Home",
-            route = NavRoute.TEAMS_ROUTE
+            route = Screen.TEAM.name
         )
 
     object Games :
         BottomNavItem(
             title = "Games",
-            route = NavRoute.GAMES_ROUTE
+            route = Screen.GAMES.name
         )
 
     object Statistics :
         BottomNavItem(
             title = "Statistics",
-            route = NavRoute.STATS_ROUTE
+            route = Screen.STATS.name
         )
 }

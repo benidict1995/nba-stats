@@ -4,18 +4,18 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.benidict.nba_stats.navigation.NavGraph
-import com.benidict.nba_stats.navigation.NavRoute
+import com.benidict.nba_stats.navigation.Graph
+import com.benidict.nba_stats.navigation.Screen
 
 fun NavGraphBuilder.landingNavGraph(navController: NavHostController) {
     navigation(
-        route = NavGraph.LANDING_GRAPH,
-        startDestination = NavRoute.LANDING_ROUTE
+        route = Graph.LANDING_GRAPH.name,
+        startDestination = Screen.LANDING.name
     ) {
-        composable(route = NavRoute.LANDING_ROUTE) {
+        composable(route = Screen.LANDING.name) {
             navController.apply {
                 navController.popBackStack()
-                navController.navigate(NavGraph.HOME_GRAPH)
+                navController.navigate(Graph.HOME_GRAPH.name)
             }
         }
     }
