@@ -18,7 +18,7 @@ import com.benidict.nba_stats.ext.onLoaderShow
 import com.benidict.nba_stats.feature.teams.TeamViewModel
 
 @Composable
-fun TeamList(viewModel: TeamViewModel, loaderShow: onLoaderShow) {
+fun TeamList(viewModel: TeamViewModel, loaderShow: onLoaderShow, onClickTeam: (Team) -> Unit) {
     LaunchedEffect(Unit) {
         viewModel.loadTeams()
     }
@@ -31,7 +31,9 @@ fun TeamList(viewModel: TeamViewModel, loaderShow: onLoaderShow) {
         ) {
             items(teams.itemCount) { index ->
                 8.SpaceMaxWidth()
-                TeamCard(teams[index] as Team)
+                TeamCard(teams[index] as Team){
+                    onClickTeam(it)
+                }
             }
         }
         teams.LoadPagingStateItem(

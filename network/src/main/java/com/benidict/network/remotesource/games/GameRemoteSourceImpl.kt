@@ -5,8 +5,11 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.benidict.domain.model.Game
 import com.benidict.network.NbaServiceApi
+import com.benidict.network.model.GameDTO.Companion.toDomain
 import com.benidict.network.remotesource.games.paging.GamePagingDataSource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GameRemoteSourceImpl @Inject constructor(
@@ -15,6 +18,12 @@ class GameRemoteSourceImpl @Inject constructor(
 
     companion object {
         const val PAGE_SIZE = 10
+    }
+
+    suspend fun loadGameDetails(id: String): Game {
+       return withContext(Dispatchers.IO) {
+            nbaServiceApi.loadGameDetails(id).data.toDomain()
+        }
     }
 
     fun loadGames(): Flow<PagingData<Game>> = Pager(

@@ -5,5 +5,6 @@ enum class Screen {
     LANDING,
     TEAM_DETAILS,
     GAMES,
+    GAME_DETAILS,
     STATS
 }

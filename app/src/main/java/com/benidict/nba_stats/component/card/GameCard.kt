@@ -25,12 +25,16 @@ import com.benidict.nba_stats.R
 import com.benidict.nba_stats.ui.theme.NbastatsTheme
 
 @Composable
-fun GameCard(game: Game) {
+fun GameCard(game: Game, onGameClick: (Int) -> Unit) {
     Card(
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .clickable { }
+            .clickable {
+                onGameClick(
+                    game.id
+                )
+            }
     ) {
         ConstraintLayout(
             modifier = Modifier
@@ -151,6 +155,8 @@ fun GameCard(game: Game) {
 @Composable
 fun GameCardPreview() {
     NbastatsTheme {
-        GameCard(Game.empty())
+        GameCard(Game.empty()){
+
+        }
     }
 }

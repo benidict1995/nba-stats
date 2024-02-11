@@ -2,6 +2,7 @@ package com.benidict.data.module
 
 import com.benidict.data.repository.games.GamesRepositoryImpl
 import com.benidict.data.repository.teams.TeamRepositoryImpl
+import com.benidict.data.usecase.games.LoadGameByIdUseCase
 import com.benidict.data.usecase.games.LoadGamesUseCase
 import com.benidict.data.usecase.teams.LoadTeamsUseCase
 import dagger.Module
@@ -25,4 +26,10 @@ object UseCaseModule {
     fun providesLoadGamesUseCase(
         gamesRepositoryImpl: GamesRepositoryImpl
     ) = LoadGamesUseCase(gamesRepositoryImpl)
+
+    @Provides
+    @ViewModelScoped
+    fun providesLoadGameByIdUseCase(
+        gamesRepositoryImpl: GamesRepositoryImpl
+    ) = LoadGameByIdUseCase(gamesRepositoryImpl)
 }

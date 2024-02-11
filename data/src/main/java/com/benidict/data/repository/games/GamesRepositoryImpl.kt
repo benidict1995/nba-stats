@@ -11,4 +11,7 @@ class GamesRepositoryImpl @Inject constructor(
 ) {
     fun loadGames(): Flow<PagingData<Game>>
      = gameRemoteSourceImpl.loadGames()
+
+    suspend fun loadGameDetails(id: String): Game =
+        gameRemoteSourceImpl.loadGameDetails(id)
 }

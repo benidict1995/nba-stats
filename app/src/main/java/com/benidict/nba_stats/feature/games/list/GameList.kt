@@ -18,7 +18,7 @@ import com.benidict.nba_stats.feature.games.GamesViewModel
 
 
 @Composable
-fun GameList(viewModel: GamesViewModel, loaderShow: onLoaderShow) {
+fun GameList(viewModel: GamesViewModel, loaderShow: onLoaderShow, onGameClick: (Int) -> Unit) {
     LaunchedEffect(Unit) {
         viewModel.loadGames()
     }
@@ -29,7 +29,9 @@ fun GameList(viewModel: GamesViewModel, loaderShow: onLoaderShow) {
         ) {
             items(games.itemCount) { index ->
                 8.SpaceMaxWidth()
-                GameCard(game = games[index] as Game)
+                GameCard(game = games[index] as Game) {
+                    onGameClick(it)
+                }
             }
         }
         games.LoadPagingStateItem(

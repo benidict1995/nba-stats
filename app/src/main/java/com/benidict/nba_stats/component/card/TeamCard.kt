@@ -28,12 +28,14 @@ import com.benidict.nba_stats.R
 import com.benidict.nba_stats.ui.theme.NbastatsTheme
 
 @Composable
-fun TeamCard(team: Team) {
+fun TeamCard(team: Team, onClickTeam: (Team) -> Unit) {
     Card(
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .clickable { }
+            .clickable {
+                onClickTeam(team)
+            }
     ){
         ConstraintLayout(
             modifier = Modifier
@@ -102,6 +104,8 @@ fun TeamCard(team: Team) {
 @Composable
 fun TeamCardPreview() {
     NbastatsTheme {
-        TeamCard(Team.dummyData)
+        TeamCard(Team.dummyData){
+
+        }
     }
 }

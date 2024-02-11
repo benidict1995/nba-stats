@@ -10,7 +10,7 @@ import com.benidict.nba_stats.ext.SpaceMaxWidth
 import com.benidict.nba_stats.feature.games.list.GameList
 
 @Composable
-fun GamesScreen() {
+fun GamesScreen(onGameClick: (Int) -> Unit) {
     val viewModel = hiltViewModel<GamesViewModel>()
     Column(
         modifier = Modifier.fillMaxSize()
@@ -19,6 +19,8 @@ fun GamesScreen() {
         GameList(viewModel = viewModel, loaderShow = { isShow ->
             if (isShow)
                 CenteredCircularProgressIndicator()
+        }, onGameClick = {
+            onGameClick(it)
         })
 
     }

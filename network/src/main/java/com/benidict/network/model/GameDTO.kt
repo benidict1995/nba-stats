@@ -32,6 +32,22 @@ data class GameDTO (
             visitorScore = 0
         )
 
+        fun GameDTO.toDomain() = with(this) {
+            Game(
+                id = id,
+                date = date,
+                team = TeamDTO.toDomain(teamsDTO),
+                score = score,
+                period = period,
+                postseason = postseason,
+                season = season,
+                status = status,
+                time = time,
+                visitorTeam = TeamDTO.toDomain(visitorTeam),
+                visitorScore = visitorScore
+            )
+        }
+
         fun List<GameDTO>.toDomain() = this.map {
             with(it) {
                 Game(
