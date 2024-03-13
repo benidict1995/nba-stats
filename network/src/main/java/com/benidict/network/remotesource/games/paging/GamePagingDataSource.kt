@@ -3,6 +3,7 @@ package com.benidict.network.remotesource.games.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.benidict.domain.model.Game
+import com.benidict.network.API_KEY
 import com.benidict.network.NbaServiceApi
 import com.benidict.network.model.GameDTO.Companion.toDomain
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +23,7 @@ class GamePagingDataSource(
         return try {
             withContext(Dispatchers.IO) {
                     val response = nbaServiceApi.loadGames(
+                        API_KEY,
                         page = page,
                         perPage = params.loadSize
                     ).data.toDomain()

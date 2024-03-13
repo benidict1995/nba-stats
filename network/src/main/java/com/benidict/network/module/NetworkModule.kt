@@ -58,7 +58,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(gson: Gson, client: OkHttpClient): NbaServiceApi =
         Retrofit.Builder()
-            .baseUrl("https://balldontlie.io/api/")
+            .baseUrl("https://api.balldontlie.io/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

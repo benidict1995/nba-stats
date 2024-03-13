@@ -1,5 +1,6 @@
 package com.benidict.nba_stats.component.card
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -37,6 +38,7 @@ fun TeamCard(team: Team, onClickTeam: (Team) -> Unit) {
                 onClickTeam(team)
             }
     ){
+        Log.d("makerChecker", "team:$team")
         ConstraintLayout(
             modifier = Modifier
                 .padding(

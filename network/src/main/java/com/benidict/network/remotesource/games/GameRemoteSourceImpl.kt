@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.benidict.domain.model.Game
+import com.benidict.network.API_KEY
 import com.benidict.network.NbaServiceApi
 import com.benidict.network.model.GameDTO.Companion.toDomain
 import com.benidict.network.remotesource.games.paging.GamePagingDataSource
@@ -14,15 +15,15 @@ import javax.inject.Inject
 
 class GameRemoteSourceImpl @Inject constructor(
     private val nbaServiceApi: NbaServiceApi
-){
+) {
 
     companion object {
         const val PAGE_SIZE = 10
     }
 
     suspend fun loadGameDetails(id: String): Game {
-       return withContext(Dispatchers.IO) {
-            nbaServiceApi.loadGameDetails(id).data.toDomain()
+        return withContext(Dispatchers.IO) {
+            nbaServiceApi.loadGameDetails(API_KEY, id).data.toDomain()
         }
     }
 

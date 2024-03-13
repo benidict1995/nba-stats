@@ -44,10 +44,10 @@ fun TeamList(viewModel: TeamViewModel, loaderShow: onLoaderShow, onClickTeam: (T
                 loaderShow(false)
             },
             errorRefresh = {
-
+                Log.d("makerChecker", "errorRefresh:${it.message}")
             },
             errorAppend = {
-
+                Log.d("makerChecker", "errorAppend:${it.message}")
             }
         )
     }
